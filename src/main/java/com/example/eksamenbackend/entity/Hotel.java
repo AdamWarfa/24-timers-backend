@@ -1,5 +1,6 @@
 package com.example.eksamenbackend.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -28,6 +29,7 @@ public class Hotel {
     private LocalDateTime updated;
 
     @OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private Set<Room> rooms;
 
     public Hotel(String name, String street, String city, int zip, String country) {

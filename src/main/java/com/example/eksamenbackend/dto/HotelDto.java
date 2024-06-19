@@ -16,9 +16,10 @@ public class HotelDto {
     private String city;
     private int zip;
     private String country;
-    private Set<Room> rooms;
+    private Set<RoomDto> rooms;
 
-    public HotelDto(String name, String street, String city, int zip, String country, Set<Room> rooms) {
+    public HotelDto(UUID id, String name, String street, String city, int zip, String country, Set<RoomDto> rooms) {
+        this.id = id;
         this.name = name;
         this.street = street;
         this.city = city;

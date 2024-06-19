@@ -6,7 +6,7 @@ import com.example.eksamenbackend.entity.Room;
 public class RoomMapper {
 
     public static RoomDto mapToDto(Room room) {
-        return new RoomDto(room.getRoomNumber(), room.getNumberOfBeds(), room.getPrice());
+        return new RoomDto(room.getId(),room.getRoomNumber(), room.getNumberOfBeds(), room.getPrice(), room.getHotel().getId());
     }
 
     public static Room mapToEntity(RoomDto roomDto) {

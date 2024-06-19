@@ -12,11 +12,15 @@ public class RoomDto {
     private int roomNumber;
     private int numberOfBeds;
     private int price;
+    private UUID hotelId;
 
 
-    public RoomDto(int roomNumber, int numberOfBeds, int price) {
+    public RoomDto(UUID id, int roomNumber, int numberOfBeds, int price, UUID hotelId) {
+        this.id = id;
         this.roomNumber = roomNumber;
         this.numberOfBeds = numberOfBeds;
         this.price = price;
+        this.hotelId = hotelId;
+
     }
 }
