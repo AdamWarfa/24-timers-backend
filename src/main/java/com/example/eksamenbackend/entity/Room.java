@@ -1,13 +1,11 @@
 package com.example.eksamenbackend.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -22,6 +20,13 @@ public class Room {
     private int roomNumber;
     private int numberOfBeds;
     private int price;
+    private LocalDateTime created;
+    private LocalDateTime updated;
+
+    @ManyToOne
+    @JoinColumn(name = "hotel_id")
+    private Hotel hotel;
+
     @OneToMany(mappedBy = "room")
     private List<Reservation> reservations;
 
@@ -29,5 +34,7 @@ public class Room {
         this.roomNumber = roomNumber;
         this.numberOfBeds = numberOfBeds;
         this.price = price;
+        this.created = LocalDateTime.now();
+        this.updated = LocalDateTime.now();
     }
 }
