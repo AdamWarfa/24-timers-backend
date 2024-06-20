@@ -18,15 +18,16 @@ public class ParticipantDto {
     private String club;
 
     private Set<UUID> disciplineIds = new HashSet<>();
-    private Set<UUID> resultIds;
+    private Set<UUID> resultIds = new HashSet<>();
 
-    public ParticipantDto(UUID id, String fullName, String gender, int age, String club, Set<UUID> disciplineIds) {
+    public ParticipantDto(UUID id, String fullName, String gender, int age, String club, Set<UUID> disciplineIds, Set<UUID> resultIds) {
         this.id = id;
         this.fullName = fullName;
         this.gender = gender;
         this.age = age;
         this.club = club;
         this.disciplineIds = disciplineIds;
+        this.resultIds = resultIds;
     }
 
 }

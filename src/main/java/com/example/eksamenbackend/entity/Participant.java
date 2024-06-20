@@ -41,6 +41,7 @@ public class Participant {
         this.age = age;
         this.club = club;
         this.disciplines = new HashSet<Discipline>();
+        this.results = new HashSet<Result>();
         this.created = LocalDateTime.now();
         this.updated = LocalDateTime.now();
 
