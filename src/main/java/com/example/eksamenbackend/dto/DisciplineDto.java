@@ -1,4 +1,5 @@
 package com.example.eksamenbackend.dto;
 
-public class ReservationDto {
+public class DisciplineDto {
+
 }

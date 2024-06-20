@@ -5,10 +5,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.Cascade;
 
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
@@ -16,29 +14,33 @@ import java.util.UUID;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Hotel {
+public class Participant {
     @Id
     @GeneratedValue(generator = "UUID")
     private UUID id;
-    private String name;
-    private String street;
-    private String city;
-    private int zip;
-    private String country;
+    private String fullName;
+    private String gender;
+    private int age;
+    private String club;
+
     private LocalDateTime created;
     private LocalDateTime updated;
 
-    @OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
-    private Set<Room> rooms;
+    @ManyToMany(mappedBy = "participants")
+    private Set<Discipline> disciplines;
 
-    public Hotel(String name, String street, String city, int zip, String country) {
-        this.name = name;
-        this.street = street;
-        this.city = city;
-        this.zip = zip;
-        this.country = country;
+    @OneToMany(mappedBy = "participant")
+    @JsonManagedReference
+    private Set<Result> results;
+
+
+    public Participant(String fullName, String gender, int age, String club) {
+        this.fullName = fullName;
+        this.gender = gender;
+        this.age = age;
+        this.club = club;
         this.created = LocalDateTime.now();
         this.updated = LocalDateTime.now();
+
     }
 }

@@ -1,4 +1,4 @@
 package com.example.eksamenbackend.service;
 
-public class RoomService {
+public class ResultService {
 }

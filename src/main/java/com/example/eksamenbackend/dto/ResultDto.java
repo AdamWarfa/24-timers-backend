@@ -7,7 +7,7 @@ import java.util.UUID;
 
 @Data
 @NoArgsConstructor
-public class RoomDto {
+public class ResultDto {
     private UUID id;
     private int roomNumber;
     private int numberOfBeds;
@@ -15,7 +15,7 @@ public class RoomDto {
     private UUID hotelId;
 
 
-    public RoomDto(UUID id, int roomNumber, int numberOfBeds, int price, UUID hotelId) {
+    public ResultDto(UUID id, int roomNumber, int numberOfBeds, int price, UUID hotelId) {
         this.id = id;
         this.roomNumber = roomNumber;
         this.numberOfBeds = numberOfBeds;
