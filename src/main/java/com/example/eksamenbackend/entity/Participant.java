@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
@@ -39,6 +40,7 @@ public class Participant {
         this.gender = gender;
         this.age = age;
         this.club = club;
+        this.disciplines = new HashSet<Discipline>();
         this.created = LocalDateTime.now();
         this.updated = LocalDateTime.now();
 

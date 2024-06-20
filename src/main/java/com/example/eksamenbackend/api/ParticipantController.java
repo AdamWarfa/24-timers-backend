@@ -3,6 +3,7 @@ package com.example.eksamenbackend.api;
 import com.example.eksamenbackend.dto.ParticipantDto;
 import com.example.eksamenbackend.entity.Participant;
 import com.example.eksamenbackend.service.ParticipantService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,27 +19,39 @@ public class ParticipantController {
     }
 
     @GetMapping("/api/participants")
-    public List<ParticipantDto> getParticipants() {
-        return participantService.getAllParticipants();
+    public ResponseEntity<List<ParticipantDto>> getParticipants() {
+
+        return ResponseEntity.status(200).body(participantService.getAllParticipants());
     }
 
     @GetMapping("/api/participants/{id}")
-    public ParticipantDto getParticipant(@PathVariable UUID id) {
-        return participantService.getParticipant(id);
+    public ResponseEntity<ParticipantDto> getParticipant(@PathVariable UUID id) {
+
+        if (id == null) {
+            return ResponseEntity.status(400).body(null);
+        }
+        return ResponseEntity.status(200).body(participantService.getParticipant(id));
+
     }
 
 
 
     @PostMapping("/api/participants")
-    public String createHotel(@RequestBody ParticipantDto participantDto) {
+    public ResponseEntity<ParticipantDto> createHotel(@RequestBody ParticipantDto participantDto) {
         participantService.createParticipant(participantDto);
-        return "Participant added!";
+        return ResponseEntity.status(201).body(participantDto);
     }
 
     @PutMapping("/api/participants/{id}")
-    public String updateHotel(@PathVariable UUID id, @RequestBody ParticipantDto participantDto) {
+    public ResponseEntity<ParticipantDto> updateHotel(@PathVariable UUID id, @RequestBody ParticipantDto participantDto) {
         participantService.updateParticipant(id, participantDto);
-        return "Participant updated!";
+        return ResponseEntity.status(200).body(participantDto);
+    }
+
+    @PutMapping("/api/participants/{id}/removeDiscipline/{disciplineId}")
+    public ResponseEntity<ParticipantDto> removeDiscipline(@PathVariable UUID id, @PathVariable UUID disciplineId) {
+        participantService.removeDiscipline(id, disciplineId);
+        return ResponseEntity.status(200).body(participantService.getParticipant(id));
     }
 
     @DeleteMapping("/api/participants/{id}")

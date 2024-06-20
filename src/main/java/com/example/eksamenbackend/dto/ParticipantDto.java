@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
@@ -16,16 +17,16 @@ public class ParticipantDto {
     private int age;
     private String club;
 
-    private Set<DisciplineDto> disciplines;
-    private Set<ResultDto> results;
+    private Set<UUID> disciplineIds = new HashSet<>();
+    private Set<UUID> resultIds;
 
-    public ParticipantDto(UUID id, String fullName, String gender, int age, String club) {
+    public ParticipantDto(UUID id, String fullName, String gender, int age, String club, Set<UUID> disciplineIds) {
         this.id = id;
         this.fullName = fullName;
         this.gender = gender;
         this.age = age;
-        this.club = club;;
-
+        this.club = club;
+        this.disciplineIds = disciplineIds;
     }
 
 }
