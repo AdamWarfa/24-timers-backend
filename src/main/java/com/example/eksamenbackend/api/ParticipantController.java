@@ -55,9 +55,9 @@ public class ParticipantController {
     }
 
     @DeleteMapping("/api/participants/{id}")
-    public String deleteHotel(@PathVariable UUID id) {
+    public ResponseEntity<String> deleteHotel(@PathVariable UUID id) {
         participantService.deleteParticipant(id);
-        return "Participant deleted!";
+        return ResponseEntity.status(204).body(null);
     }
 
 }

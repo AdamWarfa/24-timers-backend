@@ -27,23 +27,19 @@ public class Participant {
     private LocalDateTime created;
     private LocalDateTime updated;
 
-    @ManyToMany(mappedBy = "participants")
-    private Set<Discipline> disciplines;
+    @ManyToMany(mappedBy = "participants", cascade = CascadeType.ALL) // Set cascade type here
+    private Set<Discipline> disciplines = new HashSet<>();
 
-    @OneToMany(mappedBy = "participant")
+    @OneToMany(mappedBy = "participant", cascade = CascadeType.ALL) // Set cascade type here
     @JsonManagedReference
-    private Set<Result> results;
-
+    private Set<Result> results = new HashSet<>();
 
     public Participant(String fullName, String gender, int age, String club) {
         this.fullName = fullName;
         this.gender = gender;
         this.age = age;
         this.club = club;
-        this.disciplines = new HashSet<Discipline>();
-        this.results = new HashSet<Result>();
         this.created = LocalDateTime.now();
         this.updated = LocalDateTime.now();
-
     }
 }
