@@ -60,8 +60,9 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <scope>runtime</scope>
+            <version>8.0.32</version>
         </dependency>
+
 
         <!-- Lombok for reducing boilerplate code (optional) -->
         <dependency>
